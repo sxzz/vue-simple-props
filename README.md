@@ -18,6 +18,21 @@ npm i vue-simple-props
 
 ## Usage
 
+### Functional Component (Stateful)
+
+```tsx
+import { defineFunctionalComponent } from 'vue-simple-props'
+
+const Comp = defineFunctionalComponent<Props>(
+  (props) => {
+    return () => <div>...</div>
+  },
+  { inheritAttrs: false }
+)
+```
+
+### Options Component
+
 ```tsx
 import { defineSimpleComponent, useProps } from 'vue-simple-props'
 
@@ -28,7 +43,7 @@ interface Props {
 }
 
 export const Comp = defineSimpleComponent<Props>({
-  name: 'Comp',
+  inheritAttrs: false,
   setup() {
     const props = useProps<Props>()
     return () => <div>...</div>
