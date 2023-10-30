@@ -26,6 +26,12 @@ npm i vue-simple-props
 ```tsx
 import { defineFunctionalComponent as defineComponent } from 'vue-simple-props'
 
+interface Props {
+  foo: string
+  onClick: () => void
+  renderDefault?: () => JSX.Element
+}
+
 const Comp = defineComponent<Props>(
   (props) => {
     return () => <div>...</div>
