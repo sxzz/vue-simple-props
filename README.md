@@ -73,4 +73,4 @@ export const Comp = defineComponent<Props>({
 
 ## License
 
-[MIT](./LICENSE) License © 2023 [三咲智子](https://github.com/sxzz)
+[MIT](./LICENSE) License © 2023 [三咲智子 Kevin Deng](https://github.com/sxzz)
