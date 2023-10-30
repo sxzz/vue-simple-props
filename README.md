@@ -32,8 +32,8 @@ interface Props {
   renderDefault?: () => JSX.Element
 }
 
-const Comp = defineComponent<Props>(
-  (props) => {
+const Comp = defineComponent(
+  (props: Props) => {
     return () => <div>...</div>
   },
   { inheritAttrs: false }
