@@ -2,10 +2,32 @@
 
 [![Unit Test](https://github.com/sxzz/vue-simple-props/actions/workflows/unit-test.yml/badge.svg)](https://github.com/sxzz/vue-simple-props/actions/workflows/unit-test.yml)
 
+Remove props, emits, slots, and attrs concepts in Vue.
+
 ## Install
 
 ```bash
 npm i vue-simple-props
+```
+
+## Usage
+
+```tsx
+import { defineSimpleComponent, useProps } from 'vue-simple-props'
+
+interface Props {
+  foo: string
+  onClick: () => void
+  renderDefault?: () => JSX.Element
+}
+
+export const Comp = defineSimpleComponent<Props>({
+  name: 'Comp',
+  setup() {
+    const props = useProps<Props>()
+    return () => <div>...</div>
+  },
+})
 ```
 
 ## Sponsors
