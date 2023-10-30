@@ -11,7 +11,7 @@ interface Props {
 export const Comp = defineSimpleComponent<Props>({
   name: 'Comp',
   setup() {
-    const props: Props = useProps()
+    const props = useProps<Props>()
     return () => (
       <div>
         <p>foo = {props.foo}</p>
