@@ -9,7 +9,7 @@ function handleClick() {
 
 <template>
   <Comp foo="bar" @click="handleClick">
-    <template #title>title</template>
+    <template #title="{ id }">title {{ id }}</template>
     <div>Hello</div>
   </Comp>
 </template>

@@ -5,7 +5,7 @@ interface Props {
   onClick?: (evt: boolean) => void
   onInput?: (evt: string) => void
   renderDefault?: () => JSX.Element
-  renderTitle?: () => JSX.Element
+  renderTitle?: (scope: { id: number }) => JSX.Element
 }
 
 export const Comp = defineComponent((props: Props) => {
@@ -16,7 +16,7 @@ export const Comp = defineComponent((props: Props) => {
         <button onClick={() => props.onClick?.(true)}>click me</button>
         <fieldset>
           <legend>slots</legend>
-          {props.renderTitle?.()}
+          {props.renderTitle?.({ id: 0 })}
           {props.renderDefault?.()}
         </fieldset>
       </div>
