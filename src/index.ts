@@ -1,8 +1,10 @@
 import {
   type Component,
+  type ComponentOptions,
   type FunctionalComponent,
   camelize,
   computed,
+  defineComponent,
   getCurrentInstance,
   useAttrs,
 } from 'vue'
@@ -43,8 +45,27 @@ export type ExtractSlots<T extends Record<any, any>> = {
   [P in keyof T as RemovePrefix<string & P, 'render'>]: T[P]
 }
 
+/**
+ * use `useProps` to get props
+ */
 export function defineSimpleComponent<T extends Record<any, any>>(
-  comp: Component
+  comp: Component,
+  extraOptions?: ComponentOptions
 ): FunctionalComponent<ExtractProps<T>, ExtractEvent<T>, ExtractSlots<T>> {
-  return comp as any
+  return defineComponent(comp as any, extraOptions)
+}
+
+export function defineFunctionalComponent<T extends Record<any, any>>(
+  comp: FunctionalComponent<any, any, any>,
+  extraOptions?: ComponentOptions
+): FunctionalComponent<ExtractProps<T>, ExtractEvent<T>, ExtractSlots<T>> {
+  const fn: FunctionalComponent = (_props, ctx) => {
+    const props = useProps()
+    return comp(props, ctx)
+  }
+  Object.keys(comp).forEach((key) => {
+    // @ts-expect-error
+    fn[key] = comp[key]
+  })
+  return defineComponent(fn as any, extraOptions)
 }
