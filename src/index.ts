@@ -7,7 +7,7 @@ import {
   getCurrentInstance,
   useAttrs,
 } from 'vue'
-import type { ExtractEvent, ExtractProps, ExtractSlots } from './types'
+import type { ComponentType } from './types'
 
 export function useProps<T>(): T {
   const instance = getCurrentInstance()
@@ -59,14 +59,14 @@ export function useProps<T>(): T {
 export function defineSimpleComponent<T extends Record<any, any>>(
   comp: Component,
   extraOptions?: ComponentOptions
-): FunctionalComponent<ExtractProps<T>, ExtractEvent<T>, ExtractSlots<T>> {
-  return defineComponent(comp as any, extraOptions)
+): ComponentType<T> {
+  return defineComponent(comp as any, extraOptions) as any
 }
 
 export function defineFunctionalComponent<T extends Record<any, any>>(
   comp: FunctionalComponent<T, any, any>,
   extraOptions?: ComponentOptions
-): FunctionalComponent<ExtractProps<T>, ExtractEvent<T>, ExtractSlots<T>> {
+): ComponentType<T> {
   const fn: FunctionalComponent = (_props, ctx) => {
     const props = useProps()
     return comp(props as any, ctx)
