@@ -1,0 +1,66 @@
+{
+  "name": "vue-simple-props",
+  "version": "0.0.0",
+  "packageManager": "pnpm@8.10.0",
+  "description": "",
+  "type": "module",
+  "license": "MIT",
+  "homepage": "https://github.com/sxzz/vue-simple-props#readme",
+  "bugs": {
+    "url": "https://github.com/sxzz/vue-simple-props/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sxzz/vue-simple-props.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "eslint --cache .",
+    "lint:fix": "pnpm run lint --fix",
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit",
+    "release": "bumpp && pnpm publish",
+    "prepublishOnly": "pnpm run build"
+  },
+  "dependencies": {
+    "@vueuse/core": "^10.5.0"
+  },
+  "devDependencies": {
+    "@sxzz/eslint-config": "^3.7.0",
+    "@sxzz/prettier-config": "^1.0.4",
+    "@types/node": "^20.8.9",
+    "@vue/test-utils": "^2.4.1",
+    "bumpp": "^9.2.0",
+    "change-case": "^5.1.2",
+    "eslint": "^8.52.0",
+    "fast-glob": "^3.3.1",
+    "happy-dom": "^12.10.3",
+    "prettier": "^3.0.3",
+    "tsup": "^7.2.0",
+    "tsx": "^3.14.0",
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.6",
+    "vue": "^3.3.7"
+  },
+  "engines": {
+    "node": ">=16.14.0"
+  },
+  "prettier": "@sxzz/prettier-config"
+}
