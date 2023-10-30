@@ -4,6 +4,12 @@
 
 Remove emits, slots, and attrs concepts in Vue.
 
+## Features
+
+- 🤐 No need to define props, emits, slots, and attrs in runtime.
+- 🦾 Fully TypeScript support.
+- 👾 Non-invasive.
+
 ## Install
 
 ```bash
