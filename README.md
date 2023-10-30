@@ -2,7 +2,7 @@
 
 [![Unit Test](https://github.com/sxzz/vue-simple-props/actions/workflows/unit-test.yml/badge.svg)](https://github.com/sxzz/vue-simple-props/actions/workflows/unit-test.yml)
 
-Remove props, emits, slots, and attrs concepts in Vue.
+Remove emits, slots, and attrs concepts in Vue.
 
 ## Install
 
