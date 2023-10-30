@@ -39,16 +39,16 @@
     "release": "bumpp && pnpm publish",
     "prepublishOnly": "pnpm run build"
   },
-  "dependencies": {
-    "@vueuse/core": "^10.5.0"
+  "peerDependencies": {
+    "vue": "^3.0.0"
   },
+  "dependencies": {},
   "devDependencies": {
     "@sxzz/eslint-config": "^3.7.0",
     "@sxzz/prettier-config": "^1.0.4",
     "@types/node": "^20.8.9",
     "@vue/test-utils": "^2.4.1",
     "bumpp": "^9.2.0",
-    "change-case": "^5.1.2",
     "eslint": "^8.52.0",
     "fast-glob": "^3.3.1",
     "happy-dom": "^12.10.3",

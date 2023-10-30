@@ -1,12 +1,12 @@
 import {
   type Component,
   type FunctionalComponent,
+  camelize,
   computed,
   getCurrentInstance,
   useAttrs,
 } from 'vue'
-import { camelCase } from 'change-case'
-import { toReactive } from '@vueuse/core'
+import { toReactive } from './utils'
 
 export function useProps<T>(): T {
   const instance = getCurrentInstance()
@@ -21,7 +21,7 @@ export function useProps<T>(): T {
     computed(() => ({
       ...attrs,
       ...Object.fromEntries(
-        Object.entries(slots).map(([k, v]) => [camelCase(`render-${k}`), v])
+        Object.entries(slots).map(([k, v]) => [camelize(`render-${k}`), v])
       ),
     }))
   ) as any
