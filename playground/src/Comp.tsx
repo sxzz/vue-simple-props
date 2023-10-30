@@ -1,4 +1,4 @@
-import { defineSimpleComponent, useProps } from 'vue-simple-props'
+import { defineFunctionalComponent as defineComponent } from 'vue-simple-props'
 
 interface Props {
   foo: string
@@ -8,11 +8,9 @@ interface Props {
   renderTitle?: () => JSX.Element
 }
 
-export const Comp = defineSimpleComponent<Props>({
-  name: 'Comp',
-  setup() {
-    const props = useProps<Props>()
-    return () => (
+export const Comp = defineComponent((props: Props) => {
+  return () => {
+    return (
       <div>
         <p>foo = {props.foo}</p>
         <button onClick={() => props.onClick(true)}>click me</button>
@@ -23,5 +21,5 @@ export const Comp = defineSimpleComponent<Props>({
         </fieldset>
       </div>
     )
-  },
+  }
 })

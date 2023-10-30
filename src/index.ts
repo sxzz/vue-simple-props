@@ -3,12 +3,11 @@ import {
   type ComponentOptions,
   type FunctionalComponent,
   camelize,
-  computed,
   defineComponent,
   getCurrentInstance,
   useAttrs,
 } from 'vue'
-import { toReactive } from './utils'
+import type { ExtractEvent, ExtractProps, ExtractSlots } from './types'
 
 export function useProps<T>(): T {
   const instance = getCurrentInstance()
@@ -17,32 +16,41 @@ export function useProps<T>(): T {
   }
 
   const attrs = useAttrs()
-  const { slots } = instance
 
-  return toReactive(
-    computed(() => ({
-      ...attrs,
-      ...Object.fromEntries(
-        Object.entries(slots).map(([k, v]) => [camelize(`render-${k}`), v])
-      ),
-    }))
+  function getSlotName(p: PropertyKey) {
+    if (typeof p === 'string' && p.startsWith('render'))
+      return p.slice(6).replace(/^[A-Z]/, (s) => s.toLowerCase())
+  }
+
+  return new Proxy(
+    {},
+    {
+      get(target, p, receiver) {
+        const slotName = getSlotName(p)
+        if (slotName) return Reflect.get(instance.slots, slotName, receiver)
+        return Reflect.get(attrs, p, receiver)
+      },
+      ownKeys() {
+        return [
+          ...Reflect.ownKeys(attrs),
+          ...Reflect.ownKeys(instance.slots).map((k) =>
+            typeof k === 'string' ? camelize(`render-${k}`) : k
+          ),
+        ]
+      },
+      has(target, p) {
+        const slotName = getSlotName(p)
+        if (slotName) return Reflect.has(instance.slots, slotName)
+        return Reflect.has(attrs, p)
+      },
+      getOwnPropertyDescriptor(target, p) {
+        const slotName = getSlotName(p)
+        if (slotName)
+          return Reflect.getOwnPropertyDescriptor(instance.slots, slotName)
+        return Reflect.getOwnPropertyDescriptor(attrs, p)
+      },
+    }
   ) as any
-}
-
-type RemovePrefix<
-  K extends string,
-  P extends string,
-> = K extends `${P}${infer Event}` ? Uncapitalize<Event> : never
-
-export type ExtractProps<T extends Record<any, any>> = Omit<
-  T,
-  `${'on' | 'render'}${string}`
->
-export type ExtractEvent<T extends Record<any, any>> = {
-  [P in keyof T as RemovePrefix<string & P, 'on'>]: T[P]
-}
-export type ExtractSlots<T extends Record<any, any>> = {
-  [P in keyof T as RemovePrefix<string & P, 'render'>]: T[P]
 }
 
 /**
@@ -56,12 +64,12 @@ export function defineSimpleComponent<T extends Record<any, any>>(
 }
 
 export function defineFunctionalComponent<T extends Record<any, any>>(
-  comp: FunctionalComponent<any, any, any>,
+  comp: FunctionalComponent<T, any, any>,
   extraOptions?: ComponentOptions
 ): FunctionalComponent<ExtractProps<T>, ExtractEvent<T>, ExtractSlots<T>> {
   const fn: FunctionalComponent = (_props, ctx) => {
     const props = useProps()
-    return comp(props, ctx)
+    return comp(props as any, ctx)
   }
   Object.keys(comp).forEach((key) => {
     // @ts-expect-error
