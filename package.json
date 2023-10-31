@@ -36,6 +36,7 @@
     "lint:fix": "pnpm run lint --fix",
     "build": "tsup",
     "dev": "tsup --watch",
+    "play": "pnpm run --filter ./playground dev",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
     "release": "bumpp && pnpm publish",

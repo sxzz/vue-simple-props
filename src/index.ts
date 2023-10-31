@@ -69,11 +69,18 @@ export function defineFunctionalComponent<T extends Record<any, any>>(
 ): ComponentType<T> {
   const fn: FunctionalComponent = (_props, ctx) => {
     const props = useProps()
-    return comp(props as any, ctx)
+
+    const CustomComp = comp(props as any, ctx)
+
+    return isFunction(CustomComp) ? CustomComp : () => CustomComp
   }
   Object.keys(comp).forEach((key) => {
     // @ts-expect-error
     fn[key] = comp[key]
   })
   return defineComponent(fn as any, extraOptions)
+}
+
+function isFunction(value: unknown): boolean {
+  return typeof value === 'function'
 }
