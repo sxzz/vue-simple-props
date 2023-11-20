@@ -36,7 +36,7 @@ const Comp = defineComponent(
   (props: Props) => {
     return () => <div>...</div>
   },
-  { inheritAttrs: false }
+  { inheritAttrs: false },
 )
 ```
 

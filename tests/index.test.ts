@@ -41,7 +41,7 @@ test('defineSimpleComponent', async () => {
           {
             default: () => h('span', ['hello']),
             title: () => h('span', ['title']),
-          }
+          },
         )
       }
     },
@@ -70,7 +70,7 @@ test('defineFunctionalComponent', async () => {
       ])
       return () => h('div')
     },
-    { inheritAttrs: false }
+    { inheritAttrs: false },
   )
   const Parent = defineComponent({
     setup() {
@@ -81,7 +81,7 @@ test('defineFunctionalComponent', async () => {
           {
             default: () => h('span', ['hello']),
             title: () => h('span', ['title']),
-          }
+          },
         )
       }
     },

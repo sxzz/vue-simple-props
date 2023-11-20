@@ -34,7 +34,7 @@ export function useProps<T>(): T {
         return [
           ...Reflect.ownKeys(attrs),
           ...Reflect.ownKeys(instance.slots).map((k) =>
-            typeof k === 'string' ? camelize(`render-${k}`) : k
+            typeof k === 'string' ? camelize(`render-${k}`) : k,
           ),
         ]
       },
@@ -49,7 +49,7 @@ export function useProps<T>(): T {
           return Reflect.getOwnPropertyDescriptor(instance.slots, slotName)
         return Reflect.getOwnPropertyDescriptor(attrs, p)
       },
-    }
+    },
   ) as any
 }
 
@@ -58,14 +58,14 @@ export function useProps<T>(): T {
  */
 export function defineSimpleComponent<T extends Record<any, any>>(
   comp: Component,
-  extraOptions?: ComponentOptions
+  extraOptions?: ComponentOptions,
 ): ComponentType<T> {
   return defineComponent(comp as any, extraOptions) as any
 }
 
 export function defineFunctionalComponent<T extends Record<any, any>>(
   comp: FunctionalComponent<T, any, any>,
-  extraOptions?: ComponentOptions
+  extraOptions?: ComponentOptions,
 ): ComponentType<T> {
   const fn: FunctionalComponent = (_props, ctx) => {
     const props = useProps()
