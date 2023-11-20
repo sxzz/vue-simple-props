@@ -47,7 +47,7 @@
   "dependencies": {},
   "devDependencies": {
     "@sxzz/eslint-config": "^3.7.4",
-    "@sxzz/prettier-config": "^1.0.4",
+    "@sxzz/prettier-config": "^2.0.0",
     "@types/node": "^20.9.2",
     "@vue/test-utils": "^2.4.2",
     "bumpp": "^9.2.0",
