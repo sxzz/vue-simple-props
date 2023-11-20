@@ -55,7 +55,7 @@
     "fast-glob": "^3.3.2",
     "happy-dom": "^12.10.3",
     "prettier": "^3.1.0",
-    "tsup": "^7.2.0",
+    "tsup": "^8.0.0",
     "tsx": "^4.1.4",
     "typescript": "^5.2.2",
     "vitest": "^0.34.6",
