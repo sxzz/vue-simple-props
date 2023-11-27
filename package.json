@@ -1,7 +1,7 @@
 {
   "name": "vue-simple-props",
   "version": "0.3.1",
-  "packageManager": "pnpm@8.10.5",
+  "packageManager": "pnpm@8.11.0",
   "description": "Remove emits, slots, and attrs concepts in Vue.",
   "type": "module",
   "license": "MIT",
@@ -46,20 +46,20 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@sxzz/eslint-config": "^3.7.4",
+    "@sxzz/eslint-config": "^3.7.5",
     "@sxzz/prettier-config": "^2.0.0",
-    "@types/node": "^20.9.2",
+    "@types/node": "^20.10.0",
     "@vue/test-utils": "^2.4.2",
     "bumpp": "^9.2.0",
     "eslint": "^8.54.0",
     "fast-glob": "^3.3.2",
     "happy-dom": "^12.10.3",
     "prettier": "^3.1.0",
-    "tsup": "^8.0.0",
-    "tsx": "^4.1.4",
-    "typescript": "^5.2.2",
+    "tsup": "^8.0.1",
+    "tsx": "^4.5.0",
+    "typescript": "^5.3.2",
     "vitest": "^0.34.6",
-    "vue": "^3.3.8"
+    "vue": "^3.3.9"
   },
   "engines": {
     "node": ">=16.14.0"
