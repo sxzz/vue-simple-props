@@ -13,10 +13,10 @@
     "vue-simple-props": "workspace:^"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.5.0",
+    "@vitejs/plugin-vue": "^4.5.1",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
     "typescript": "^5.3.2",
-    "vite": "^5.0.2",
-    "vue-tsc": "^1.8.22"
+    "vite": "^5.0.4",
+    "vue-tsc": "^1.8.24"
   }
 }
