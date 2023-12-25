@@ -46,7 +46,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@sxzz/eslint-config": "^3.7.5",
+    "@sxzz/eslint-config": "^3.7.6",
     "@sxzz/prettier-config": "^2.0.0",
     "@types/node": "^20.10.5",
     "@vue/test-utils": "^2.4.3",
@@ -56,10 +56,10 @@
     "happy-dom": "^12.10.3",
     "prettier": "^3.1.1",
     "tsup": "^8.0.1",
-    "tsx": "^4.6.2",
+    "tsx": "^4.7.0",
     "typescript": "^5.3.3",
-    "vitest": "^1.0.4",
-    "vue": "^3.3.12"
+    "vitest": "^1.1.0",
+    "vue": "^3.3.13"
   },
   "engines": {
     "node": ">=16.14.0"
