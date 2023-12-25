@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.3.12",
+    "vue": "^3.3.13",
     "vue-simple-props": "workspace:^"
   },
   "devDependencies": {
@@ -17,6 +17,6 @@
     "@vitejs/plugin-vue-jsx": "^3.1.0",
     "typescript": "^5.3.3",
     "vite": "^5.0.10",
-    "vue-tsc": "^1.8.25"
+    "vue-tsc": "^1.8.26"
   }
 }
