@@ -13,6 +13,7 @@ interface Props {
   foo: string
   onClick: Function
   renderDefault: () => VNode
+  renderTitle: () => VNode
 }
 
 test('defineSimpleComponent', async () => {
