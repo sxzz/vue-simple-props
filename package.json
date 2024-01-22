@@ -48,18 +48,18 @@
   "devDependencies": {
     "@sxzz/eslint-config": "^3.7.6",
     "@sxzz/prettier-config": "^2.0.0",
-    "@types/node": "^20.11.1",
+    "@types/node": "^20.11.5",
     "@vue/test-utils": "^2.4.3",
-    "bumpp": "^9.2.1",
+    "bumpp": "^9.3.0",
     "eslint": "^8.56.0",
     "fast-glob": "^3.3.2",
-    "happy-dom": "^13.1.4",
-    "prettier": "^3.2.2",
+    "happy-dom": "^13.2.1",
+    "prettier": "^3.2.4",
     "tsup": "^8.0.1",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3",
-    "vitest": "^1.2.0",
-    "vue": "^3.4.13"
+    "vitest": "^1.2.1",
+    "vue": "^3.4.15"
   },
   "engines": {
     "node": ">=16.14.0"
