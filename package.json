@@ -51,7 +51,7 @@
     "@types/node": "^20.12.6",
     "@vue/test-utils": "^2.4.5",
     "bumpp": "^9.4.0",
-    "eslint": "^8.57.0",
+    "eslint": "^9.0.0",
     "fast-glob": "^3.3.2",
     "happy-dom": "^14.7.1",
     "prettier": "^3.2.5",
