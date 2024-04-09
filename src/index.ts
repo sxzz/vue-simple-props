@@ -75,5 +75,5 @@ export function defineFunctionalComponent<T extends Record<any, any>>(
     // @ts-expect-error
     fn[key] = comp[key]
   })
-  return defineComponent(fn as any, extraOptions)
+  return defineComponent(fn, extraOptions) as any
 }
