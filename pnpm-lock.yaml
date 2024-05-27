@@ -39,8 +39,8 @@ importers:
         specifier: ^8.0.2
         version: 8.0.2(typescript@5.4.5)
       tsx:
-        specifier: ^4.10.5
-        version: 4.10.5
+        specifier: ^4.11.0
+        version: 4.11.0
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
@@ -2408,7 +2408,7 @@ packages:
       doctrine: 3.0.0
       eslint: 9.3.0
       eslint-import-resolver-node: 0.3.9
-      get-tsconfig: 4.7.3
+      get-tsconfig: 4.7.5
       is-glob: 4.0.3
       minimatch: 9.0.4
       semver: 7.6.0
@@ -2455,7 +2455,7 @@ packages:
       enhanced-resolve: 5.16.0
       eslint: 9.3.0
       eslint-plugin-es-x: 7.6.0(eslint@9.3.0)
-      get-tsconfig: 4.7.3
+      get-tsconfig: 4.7.5
       globals: 15.1.0
       ignore: 5.3.1
       minimatch: 9.0.4
@@ -2885,12 +2885,6 @@ packages:
   /get-stream@8.0.1:
     resolution: {integrity: sha512-VaUJspBffn/LMCJVoMvSAdmscJyS1auj5Zulnn5UoYcY531UWmdwhRWkcGKnGU93m5HSXP9LP2usOryrBtQowA==}
     engines: {node: '>=16'}
-    dev: true
-
-  /get-tsconfig@4.7.3:
-    resolution: {integrity: sha512-ZvkrzoUA0PQZM6fy6+/Hce561s+faD1rsNwhnO5FelNjyy7EMGJ3Rz1AQ8GYDWjhRs/7dBLOEJvhK8MiEJOAFg==}
-    dependencies:
-      resolve-pkg-maps: 1.0.0
     dev: true
 
   /get-tsconfig@4.7.5:
@@ -4364,8 +4358,8 @@ packages:
       - ts-node
     dev: true
 
-  /tsx@4.10.5:
-    resolution: {integrity: sha512-twDSbf7Gtea4I2copqovUiNTEDrT8XNFXsuHpfGbdpW/z9ZW4fTghzzhAG0WfrCuJmJiOEY1nLIjq4u3oujRWQ==}
+  /tsx@4.11.0:
+    resolution: {integrity: sha512-vzGGELOgAupsNVssAmZjbUDfdm/pWP4R+Kg8TVdsonxbXk0bEpE1qh0yV6/QxUVXaVlNemgcPajGdJJ82n3stg==}
     engines: {node: '>=18.0.0'}
     hasBin: true
     dependencies:
