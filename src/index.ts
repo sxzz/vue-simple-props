@@ -60,7 +60,12 @@ export function defineSimpleComponent<T extends Record<any, any>>(
   comp: Component,
   extraOptions?: ComponentOptions,
 ): ComponentType<T> {
-  return defineComponent(comp as any, extraOptions) as any
+  const c: any = defineComponent(comp as any, {
+    inheritAttrs: false,
+    ...extraOptions,
+  })
+  c.inheritAttrs ??= false
+  return c
 }
 
 export function defineFunctionalComponent<T extends Record<any, any>>(
@@ -75,5 +80,8 @@ export function defineFunctionalComponent<T extends Record<any, any>>(
     // @ts-expect-error
     fn[key] = comp[key]
   })
-  return defineComponent(fn, extraOptions) as any
+  return defineComponent(fn, {
+    inheritAttrs: false,
+    ...extraOptions,
+  }) as any
 }

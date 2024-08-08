@@ -19,7 +19,7 @@ npm i vue-simple-props
 ## Usage
 
 > [!TIP]
-> For HMR to work properly, you need to rename helper function to `defineComponent`. See https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx#hmr-detection
+> For HMR to work properly, you need to rename helper function to `defineComponent`. [Why?](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx#hmr-detection)
 
 ### Functional Component (Stateful)
 

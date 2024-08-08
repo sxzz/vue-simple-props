@@ -19,7 +19,6 @@ test('defineSimpleComponent', async () => {
   let props: Props
 
   const Comp = defineSimpleComponent<Props>({
-    inheritAttrs: false,
     setup() {
       props = useProps<Props>()
       expect(Object.keys(props)).toEqual([
@@ -45,32 +44,31 @@ test('defineSimpleComponent', async () => {
       }
     },
   })
-  mount(Parent)
+  const app = mount(Parent)
 
   expect(props!.foo).toBe('bar')
 
   foo.value = 'baz'
   await nextTick()
   expect(props!.foo).toBe('baz')
+
+  expect(app.html()).toMatchInlineSnapshot(`"<div></div>"`)
 })
 
 test('defineFunctionalComponent', async () => {
   const foo = ref('bar')
   let props: Props
 
-  const Comp = defineFunctionalComponent<Props>(
-    (_props) => {
-      props = _props
-      expect(Object.keys(props)).toEqual([
-        'foo',
-        'onClick',
-        'renderDefault',
-        'renderTitle',
-      ])
-      return () => h('div')
-    },
-    { inheritAttrs: false },
-  )
+  const Comp = defineFunctionalComponent<Props>((_props) => {
+    props = _props
+    expect(Object.keys(props)).toEqual([
+      'foo',
+      'onClick',
+      'renderDefault',
+      'renderTitle',
+    ])
+    return () => h('div')
+  })
   const Parent = defineComponent({
     setup() {
       return () => {
@@ -85,11 +83,13 @@ test('defineFunctionalComponent', async () => {
       }
     },
   })
-  mount(Parent)
+  const app = mount(Parent)
 
   expect(props!.foo).toBe('bar')
 
   foo.value = 'baz'
   await nextTick()
   expect(props!.foo).toBe('baz')
+
+  expect(app.html()).toMatchInlineSnapshot(`"<div></div>"`)
 })
