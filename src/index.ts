@@ -1,11 +1,11 @@
 import {
-  type Component,
-  type ComponentOptions,
-  type FunctionalComponent,
   camelize,
   defineComponent,
   getCurrentInstance,
   useAttrs,
+  type Component,
+  type ComponentOptions,
+  type FunctionalComponent,
 } from 'vue'
 import type { ComponentType } from './types'
 

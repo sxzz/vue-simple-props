@@ -1,6 +1,6 @@
-import { expect, test } from 'vitest'
-import { type VNode, defineComponent, h, nextTick, ref } from 'vue'
 import { mount } from '@vue/test-utils'
+import { expect, test } from 'vitest'
+import { defineComponent, h, nextTick, ref, type VNode } from 'vue'
 import {
   defineFunctionalComponent,
   defineSimpleComponent,
