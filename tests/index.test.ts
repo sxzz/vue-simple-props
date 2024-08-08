@@ -74,7 +74,10 @@ test('defineFunctionalComponent', async () => {
       return () => {
         return h(
           Comp,
-          { foo: foo.value, onClick: () => {} },
+          {
+            foo: foo.value,
+            onClick: () => {},
+          },
           {
             default: () => h('span', ['hello']),
             title: () => h('span', ['title']),
