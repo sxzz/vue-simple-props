@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "ES2020",
     "jsx": "preserve",
+    "jsxImportSource": "vue",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "useDefineForClassFields": true,
     "customConditions": ["dev"],
@@ -18,5 +19,5 @@
     "skipLibCheck": true
   },
   "references": [{ "path": "./tsconfig.node.json" }],
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
+  "include": ["src"]
 }

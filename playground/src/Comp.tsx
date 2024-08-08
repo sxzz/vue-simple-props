@@ -1,11 +1,12 @@
 import { defineFunctionalComponent as defineComponent } from 'vue-simple-props'
+import type { VNode } from 'vue'
 
 interface Props {
   foo: string
   onClick?: (evt: boolean) => void
   onInput?: (evt: string) => void
-  renderDefault?: () => JSX.Element
-  renderTitle?: (scope: { id: number }) => JSX.Element
+  renderDefault?: () => VNode
+  renderTitle?: (scope: { id: number }) => VNode
 }
 
 export const Comp = defineComponent((props: Props) => {

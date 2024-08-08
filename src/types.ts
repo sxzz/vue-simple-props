@@ -1,4 +1,4 @@
-import type { DefineSetupFnComponent } from 'vue'
+import type { DefineSetupFnComponent, SlotsType } from 'vue'
 
 type RemovePrefix<
   K extends string,
@@ -16,5 +16,5 @@ export type ExtractSlots<T> = {
 export type ComponentType<T extends Record<any, any>> = DefineSetupFnComponent<
   ExtractProps<T>,
   ExtractEvent<T>,
-  ExtractSlots<T>
+  SlotsType<ExtractSlots<T>>
 >
