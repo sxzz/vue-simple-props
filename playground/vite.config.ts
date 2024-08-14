@@ -7,5 +7,10 @@ export default defineConfig({
   resolve: {
     conditions: ['dev'],
   },
-  plugins: [vue(), vueJsx()],
+  plugins: [
+    vue(),
+    vueJsx({
+      defineComponentName: ['defineComponent', 'defineFunctionalComponent'],
+    }),
+  ],
 })

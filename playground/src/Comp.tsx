@@ -1,4 +1,4 @@
-import { defineFunctionalComponent as defineComponent } from 'vue-simple-props'
+import { defineFunctionalComponent } from 'vue-simple-props'
 import type { VNode } from 'vue'
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
   renderTitle?: (scope: { id: number }) => VNode
 }
 
-export const Comp = defineComponent((props: Props) => {
+export const Comp = defineFunctionalComponent((props: Props) => {
   return () => {
     return (
       <div>
