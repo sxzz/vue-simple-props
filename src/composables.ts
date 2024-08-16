@@ -1,4 +1,4 @@
-import { camelize, getCurrentInstance, useAttrs } from 'vue'
+import { camelize, getCurrentInstance, useAttrs, type CSSProperties } from 'vue'
 
 export function useProps<T>(): T {
   const instance = getCurrentInstance()
@@ -42,4 +42,29 @@ export function useProps<T>(): T {
       },
     },
   ) as any
+}
+
+export interface ClassAndStyle {
+  class?: string
+  style?: CSSProperties
+}
+
+export function useClassAndStyle(): ClassAndStyle {
+  const instance = getCurrentInstance()
+  if (!instance) {
+    throw new Error('useClassAndStyle must be called inside setup()')
+  }
+
+  const attrs = useAttrs()
+  const keys = ['class', 'style']
+
+  return new Proxy(attrs, {
+    get(target, p, receiver) {
+      if (keys.includes(p as string)) {
+        return Reflect.get(target, p, receiver)
+      }
+    },
+    ownKeys: () => keys,
+    has: (target, p) => keys.includes(p as string),
+  })
 }

@@ -4,7 +4,9 @@ import { defineComponent, h, nextTick, ref, type VNode } from 'vue'
 import {
   defineFunctionalComponent,
   defineSimpleComponent,
+  useClassAndStyle,
   useProps,
+  type ClassAndStyle,
 } from '../src'
 
 interface Props {
@@ -95,4 +97,37 @@ test('defineFunctionalComponent', async () => {
   expect(props!.foo).toBe('baz')
 
   expect(app.html()).toMatchInlineSnapshot(`"<div></div>"`)
+})
+
+test('useClassAndStyle', () => {
+  let styles: ClassAndStyle | undefined
+  const Comp = defineFunctionalComponent(() => {
+    styles = useClassAndStyle()
+
+    return () => h('div')
+  })
+  const Parent = defineComponent({
+    setup() {
+      return () => {
+        return h(Comp, {
+          class: ['foo', 'bar'],
+          style: [{ color: 'red' }, { color: 'blue' }],
+          whatever: 'whatever',
+        })
+      }
+    },
+  })
+  mount(Parent)
+
+  expect(styles).toBeDefined()
+  if (!styles) return
+
+  expect(Object.keys(styles)).toEqual(['class', 'style'])
+  expect('class' in styles && 'style' in styles).toBe(true)
+  expect('whatever' in styles).toBe(false)
+
+  expect(styles).toEqual({
+    class: 'foo bar',
+    style: { color: 'blue' },
+  })
 })

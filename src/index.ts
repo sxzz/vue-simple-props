@@ -8,6 +8,7 @@ import { useProps } from './composables'
 import type { ComponentType } from './types'
 
 export * from './composables'
+export * from './types'
 
 /**
  * use `useProps` to get props
