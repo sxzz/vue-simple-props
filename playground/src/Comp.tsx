@@ -1,7 +1,7 @@
-import { defineFunctionalComponent } from 'vue-simple-props'
-import type { VNode } from 'vue'
+import { defineFunctionalComponent, useClassAndStyle } from 'vue-simple-props'
+import type { AllowedComponentProps, VNode } from 'vue'
 
-interface Props {
+interface Props extends AllowedComponentProps {
   foo: string
   onClick?: (evt: boolean) => void
   onInput?: (evt: string) => void
@@ -10,17 +10,16 @@ interface Props {
 }
 
 export const Comp = defineFunctionalComponent((props: Props) => {
-  return () => {
-    return (
-      <div>
-        <p>foo = {props.foo}</p>
-        <button onClick={() => props.onClick?.(true)}>click me</button>
-        <fieldset>
-          <legend>slots</legend>
-          {props.renderTitle?.({ id: 0 })}
-          {props.renderDefault?.()}
-        </fieldset>
-      </div>
-    )
-  }
+  const styles = useClassAndStyle()
+  return () => (
+    <div {...styles}>
+      <p>foo = {props.foo}</p>
+      <button onClick={() => props.onClick?.(true)}>click me</button>
+      <fieldset>
+        <legend>slots</legend>
+        {props.renderTitle?.({ id: 0 })}
+        {props.renderDefault?.()}
+      </fieldset>
+    </div>
+  )
 })

@@ -8,7 +8,7 @@ function handleClick() {
 </script>
 
 <template>
-  <Comp foo="bar" @click="handleClick">
+  <Comp style="color: red" foo="bar" @click="handleClick">
     <template #title="{ id }">title {{ id }}</template>
     <div>Hello</div>
   </Comp>
