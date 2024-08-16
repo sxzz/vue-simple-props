@@ -33,7 +33,9 @@ const Comp = defineFunctionalComponent(
   (props: Props) => {
     return () => <div>...</div>
   },
-  { inheritAttrs: false },
+  {
+    // other options, e.g. name, inheritAttrs, etc.
+  },
 )
 ```
 
@@ -49,7 +51,6 @@ interface Props {
 }
 
 export const Comp = defineSimpleComponent<Props>({
-  inheritAttrs: false,
   setup() {
     const props = useProps<Props>()
     return () => <div>...</div>
@@ -77,6 +78,10 @@ export default defineConfig({
   ],
 })
 ```
+
+## Caveats
+
+- `inheritAttrs` is `false` by default.
 
 ## Sponsors
 
