@@ -18,13 +18,10 @@ npm i vue-simple-props
 
 ## Usage
 
-> [!TIP]
-> For HMR to work properly, you need to rename helper function to `defineComponent`. [Why?](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx#hmr-detection)
-
 ### Functional Component (Stateful)
 
 ```tsx
-import { defineFunctionalComponent as defineComponent } from 'vue-simple-props'
+import { defineFunctionalComponent } from 'vue-simple-props'
 
 interface Props {
   foo: string
@@ -32,7 +29,7 @@ interface Props {
   renderDefault?: () => JSX.Element
 }
 
-const Comp = defineComponent(
+const Comp = defineFunctionalComponent(
   (props: Props) => {
     return () => <div>...</div>
   },
@@ -43,10 +40,7 @@ const Comp = defineComponent(
 ### Options Component
 
 ```tsx
-import {
-  defineSimpleComponent as defineComponent,
-  useProps,
-} from 'vue-simple-props'
+import { defineSimpleComponent, useProps } from 'vue-simple-props'
 
 interface Props {
   foo: string
@@ -54,12 +48,33 @@ interface Props {
   renderDefault?: () => JSX.Element
 }
 
-export const Comp = defineComponent<Props>({
+export const Comp = defineSimpleComponent<Props>({
   inheritAttrs: false,
   setup() {
     const props = useProps<Props>()
     return () => <div>...</div>
   },
+})
+```
+
+### HMR support
+
+```ts
+// vite.config.ts
+import vueJsx from '@vitejs/plugin-vue-jsx'
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  plugins: [
+    // ...
+    vueJsx({
+      defineComponentName: [
+        'defineComponent',
+        'defineFunctionalComponent',
+        'defineSimpleComponent',
+      ],
+    }),
+  ],
 })
 ```
 
