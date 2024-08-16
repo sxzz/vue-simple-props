@@ -21,7 +21,7 @@ npm i vue-simple-props
 ### Functional Component (Stateful)
 
 ```tsx
-import { defineFunctionalComponent } from 'vue-simple-props'
+import { defineFunctionalComponent, useClassAndStyle } from 'vue-simple-props'
 
 interface Props {
   foo: string
@@ -31,7 +31,8 @@ interface Props {
 
 const Comp = defineFunctionalComponent(
   (props: Props) => {
-    return () => <div>...</div>
+    const styles = useClassAndStyle()
+    return () => <div {...styles}>...</div>
   },
   {
     // other options, e.g. name, inheritAttrs, etc.
@@ -42,7 +43,11 @@ const Comp = defineFunctionalComponent(
 ### Options Component
 
 ```tsx
-import { defineSimpleComponent, useProps } from 'vue-simple-props'
+import {
+  defineSimpleComponent,
+  useClassAndStyle,
+  useProps,
+} from 'vue-simple-props'
 
 interface Props {
   foo: string
@@ -53,7 +58,8 @@ interface Props {
 export const Comp = defineSimpleComponent<Props>({
   setup() {
     const props = useProps<Props>()
-    return () => <div>...</div>
+    const styles = useClassAndStyle()
+    return () => <div {...props}>...</div>
   },
 })
 ```
@@ -93,4 +99,4 @@ export default defineConfig({
 
 ## License
 
-[MIT](./LICENSE) License © 2023 [三咲智子 Kevin Deng](https://github.com/sxzz)
+[MIT](./LICENSE) License © 2023-PRESENT [三咲智子 Kevin Deng](https://github.com/sxzz)
