@@ -5,7 +5,8 @@ type RemovePrefix<
   P extends string,
 > = K extends `${P}${infer Event}` ? Uncapitalize<Event> : never
 
-export type ExtractProps<T> = Omit<T, `render${string}`>
+export type ExtractProps<T> = Omit<T, `render${string}`> &
+  Partial<Pick<T, keyof T & `render${string}`>>
 export type ExtractEvent<T> = {
   [P in keyof T as RemovePrefix<string & P, 'on'>]: T[P]
 }

@@ -18,7 +18,10 @@ export function useProps<T>(): T {
     {
       get(target, p, receiver) {
         const slotName = getSlotName(p)
-        if (slotName) return Reflect.get(instance.slots, slotName, receiver)
+        if (slotName) {
+          const slot = Reflect.get(instance.slots, slotName, receiver)
+          if (slot) return slot
+        }
         return Reflect.get(attrs, p, receiver)
       },
       ownKeys() {

@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import { expect, test } from 'vitest'
+import { expect, test, vi } from 'vitest'
 import { defineComponent, h, nextTick, ref, type VNode } from 'vue'
 import {
   defineFunctionalComponent,
@@ -130,4 +130,30 @@ test('useClassAndStyle', () => {
     class: 'foo bar',
     style: { color: 'blue' },
   })
+})
+
+test('pass slot via attrs', () => {
+  interface Props {
+    renderDefault: () => VNode
+  }
+  const fn = vi.fn()
+
+  const Comp = defineSimpleComponent<Props>({
+    setup() {
+      useProps<Props>().renderDefault()
+      return () => h('div')
+    },
+  })
+  const Parent = defineComponent({
+    setup() {
+      return () => {
+        return h(Comp, {
+          renderDefault: fn,
+        })
+      }
+    },
+  })
+  mount(Parent)
+
+  expect(fn).toHaveBeenCalledTimes(1)
 })
