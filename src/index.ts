@@ -17,21 +17,19 @@ export function defineSimpleComponent<T extends Record<any, any>>(
   comp: Component,
   extraOptions?: ComponentOptions,
 ): ComponentType<T> {
-  const c: any = defineComponent(comp as any, {
+  return Object.assign({}, comp, {
     inheritAttrs: false,
     ...extraOptions,
-  })
-  c.inheritAttrs ??= false
-  return c
+  }) as any
 }
 
 export function defineFunctionalComponent<T extends Record<any, any>>(
   comp: FunctionalComponent<T, any, any>,
   extraOptions?: ComponentOptions,
 ): ComponentType<T> {
-  const fn: FunctionalComponent = (_props, ctx) => {
+  const fn: FunctionalComponent = (_props, ...args) => {
     const props = useProps()
-    return comp(props as any, ctx)
+    return comp(props as any, ...args)
   }
   Object.keys(comp).forEach((key) => {
     // @ts-expect-error

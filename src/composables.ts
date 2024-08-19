@@ -1,4 +1,10 @@
-import { camelize, getCurrentInstance, useAttrs, type CSSProperties } from 'vue'
+import {
+  camelize,
+  getCurrentInstance,
+  useAttrs,
+  useSlots,
+  type CSSProperties,
+} from 'vue'
 
 export function useProps<T>(): T {
   const instance = getCurrentInstance()
@@ -6,45 +12,54 @@ export function useProps<T>(): T {
     throw new Error('useProps must be called inside setup()')
   }
 
-  const attrs = useAttrs()
+  const slots = useSlots()
+  const getProps = () => instance.vnode.props || {}
 
   function getSlotName(p: PropertyKey) {
     if (typeof p === 'string' && p.startsWith('render'))
       return p.slice(6).replace(/^[A-Z]/, (s) => s.toLowerCase())
   }
 
-  return new Proxy(
+  const proxy = new Proxy(
     {},
     {
       get(target, p, receiver) {
         const slotName = getSlotName(p)
         if (slotName) {
-          const slot = Reflect.get(instance.slots, slotName, receiver)
+          const slot = Reflect.get(slots, slotName, receiver)
           if (slot) return slot
         }
-        return Reflect.get(attrs, p, receiver)
+        return Reflect.get(getProps(), p, receiver)
       },
       ownKeys() {
         return [
-          ...Reflect.ownKeys(attrs),
-          ...Reflect.ownKeys(instance.slots).map((k) =>
-            typeof k === 'string' ? camelize(`render-${k}`) : k,
-          ),
+          ...new Set([
+            ...Reflect.ownKeys(getProps()),
+            ...Reflect.ownKeys(slots).map((k) =>
+              typeof k === 'string' ? camelize(`render-${k}`) : k,
+            ),
+          ]),
         ]
       },
       has(target, p) {
         const slotName = getSlotName(p)
-        if (slotName) return Reflect.has(instance.slots, slotName)
-        return Reflect.has(attrs, p)
+        return (
+          (slotName && Reflect.has(slots, slotName)) ||
+          Reflect.has(getProps(), p)
+        )
       },
       getOwnPropertyDescriptor(target, p) {
         const slotName = getSlotName(p)
-        if (slotName)
-          return Reflect.getOwnPropertyDescriptor(instance.slots, slotName)
-        return Reflect.getOwnPropertyDescriptor(attrs, p)
+        if (slotName) {
+          const descriptor = Reflect.getOwnPropertyDescriptor(slots, slotName)
+          if (descriptor) return descriptor
+        }
+        return Reflect.getOwnPropertyDescriptor(getProps(), p)
       },
     },
   ) as any
+
+  return proxy
 }
 
 export interface ClassAndStyle {

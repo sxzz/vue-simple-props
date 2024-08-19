@@ -17,6 +17,9 @@ importers:
       '@types/node':
         specifier: ^22.4.1
         version: 22.4.1
+      '@vitejs/plugin-vue-jsx':
+        specifier: ^4.0.1
+        version: 4.0.1(vite@5.4.1(@types/node@22.4.1))(vue@3.4.38(typescript@5.5.4))
       '@vue/test-utils':
         specifier: ^2.4.6
         version: 2.4.6

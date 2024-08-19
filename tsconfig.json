@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
     "target": "esnext",
+    "jsx": "preserve",
     "lib": ["es2022", "dom"],
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "types": ["node"],
+    "types": ["node", "vue/jsx"],
     "strict": true,
     "noUnusedLocals": true,
     "esModuleInterop": true,

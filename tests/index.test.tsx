@@ -157,3 +157,55 @@ test('pass slot via attrs', () => {
 
   expect(fn).toHaveBeenCalledTimes(1)
 })
+
+test("don't update when emit handler changes", async () => {
+  interface Props {
+    onClick: () => void
+  }
+  const handler1 = vi.fn()
+  const handler2 = vi.fn()
+
+  const handler = ref(handler1)
+  const updated = vi.fn()
+
+  const Comp = defineSimpleComponent<Props>({
+    setup() {
+      const props = useProps<Props>()
+      return () => {
+        updated()
+        return <button id="target" onClick={props.onClick} />
+      }
+    },
+  })
+
+  const Parent = defineComponent({
+    setup() {
+      return () => {
+        return (
+          <>
+            <Comp onClick={() => handler.value()} />
+            <button id="change" onClick={() => (handler.value = handler2)}>
+              change handler
+            </button>
+          </>
+        )
+      }
+    },
+  })
+  const app = mount(Parent)
+
+  expect(updated).toHaveBeenCalledTimes(1)
+  expect(handler1).toHaveBeenCalledTimes(0)
+  expect(handler2).toHaveBeenCalledTimes(0)
+
+  await app.find('#target').trigger('click')
+  expect(updated).toHaveBeenCalledTimes(1)
+  expect(handler1).toHaveBeenCalledTimes(1)
+  expect(handler2).toHaveBeenCalledTimes(0)
+
+  await app.find('#change').trigger('click')
+  await app.find('#target').trigger('click')
+  expect(updated).toHaveBeenCalledTimes(1)
+  expect(handler1).toHaveBeenCalledTimes(1)
+  expect(handler2).toHaveBeenCalledTimes(1)
+})
