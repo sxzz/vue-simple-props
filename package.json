@@ -29,7 +29,14 @@
     "./package.json": "./package.json"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "exports": {
+      ".": {
+        "require": "./dist/index.cjs",
+        "import": "./dist/index.js"
+      },
+      "./package.json": "./package.json"
+    }
   },
   "scripts": {
     "lint": "eslint --cache .",
