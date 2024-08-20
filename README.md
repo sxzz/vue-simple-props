@@ -18,6 +18,12 @@ npm i vue-simple-props
 
 ## Usage
 
+### Conventions
+
+- Starts with `on` for event handlers.
+- Starts with `render` for slots.
+- Others are props.
+
 ### Functional Component (Stateful)
 
 ```tsx
@@ -38,6 +44,13 @@ const Comp = defineFunctionalComponent(
     // other options, e.g. name, inheritAttrs, etc.
   },
 )
+```
+
+```vue
+<!-- parent.vue -->
+<template>
+  <Comp foo="bar" @click="handleClick">slot</Comp>
+</template>
 ```
 
 ### Options Component
