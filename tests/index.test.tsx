@@ -209,3 +209,38 @@ test("don't update when emit handler changes", async () => {
   expect(handler1).toHaveBeenCalledTimes(1)
   expect(handler2).toHaveBeenCalledTimes(1)
 })
+
+test('hyphenated', () => {
+  let props: any
+  const Comp = defineSimpleComponent({
+    setup() {
+      props = useProps()
+      return () => h('div')
+    },
+  })
+
+  const Parent = defineComponent({
+    setup() {
+      return () => (
+        <Comp
+          max-count={10}
+          on-update:modelValue={() => {}}
+          render-default={() => {}}
+        />
+      )
+    },
+  })
+  mount(Parent)
+
+  expect(props).toEqual({
+    maxCount: 10,
+    'onUpdate:modelValue': expect.anything(),
+    renderDefault: expect.anything(),
+  })
+  expect(props['max-count']).toBe(props.maxCount)
+  expect(props.MAX_COUNT).toBeUndefined()
+  expect(props.MaxCount).toBeUndefined()
+
+  expect(props['on-update:modelValue']).toBe(props['onUpdate:modelValue'])
+  expect(props['render-default']).toBe(props.renderDefault)
+})

@@ -6,6 +6,10 @@ import {
   type CSSProperties,
 } from 'vue'
 
+function camelizePropKey(p: string | symbol): string | symbol {
+  return typeof p === 'string' ? camelize(p) : p
+}
+
 export function useProps<T>(): T {
   const instance = getCurrentInstance()
   if (!instance) {
@@ -13,7 +17,14 @@ export function useProps<T>(): T {
   }
 
   const slots = useSlots()
-  const getProps = () => instance.vnode.props || {}
+  const getProps = () => {
+    return Object.fromEntries(
+      Object.entries(instance.vnode.props || {}).map(([k, v]) => [
+        camelize(k),
+        v,
+      ]),
+    )
+  }
 
   function getSlotName(p: PropertyKey) {
     if (typeof p === 'string' && p.startsWith('render'))
@@ -29,7 +40,7 @@ export function useProps<T>(): T {
           const slot = Reflect.get(slots, slotName, receiver)
           if (slot) return slot
         }
-        return Reflect.get(getProps(), p, receiver)
+        return Reflect.get(getProps(), camelizePropKey(p), receiver)
       },
       ownKeys() {
         return [
@@ -43,10 +54,10 @@ export function useProps<T>(): T {
       },
       has(target, p) {
         const slotName = getSlotName(p)
-        return (
-          (slotName && Reflect.has(slots, slotName)) ||
-          Reflect.has(getProps(), p)
-        )
+        if (slotName) {
+          return Reflect.has(slots, slotName)
+        }
+        return Reflect.has(getProps(), camelizePropKey(p))
       },
       getOwnPropertyDescriptor(target, p) {
         const slotName = getSlotName(p)
@@ -54,7 +65,7 @@ export function useProps<T>(): T {
           const descriptor = Reflect.getOwnPropertyDescriptor(slots, slotName)
           if (descriptor) return descriptor
         }
-        return Reflect.getOwnPropertyDescriptor(getProps(), p)
+        return Reflect.getOwnPropertyDescriptor(getProps(), camelizePropKey(p))
       },
     },
   ) as any
