@@ -26,11 +26,6 @@ export function useProps<T>(): T {
     )
   }
 
-  function getSlotName(p: PropertyKey) {
-    if (typeof p === 'string' && p.startsWith('render'))
-      return p.slice(6).replace(/^[A-Z]/, (s) => s.toLowerCase())
-  }
-
   const proxy = new Proxy(
     {},
     {
@@ -71,6 +66,11 @@ export function useProps<T>(): T {
   ) as any
 
   return proxy
+}
+
+function getSlotName(p: PropertyKey) {
+  if (typeof p === 'string' && p.startsWith('render'))
+    return p.slice(6).replace(/^[A-Z]/, (s) => s.toLowerCase())
 }
 
 export interface ClassAndStyle {
