@@ -27,9 +27,9 @@ export function defineFunctionalComponent<T extends Record<any, any>>(
   comp: FunctionalComponent<T, any, any>,
   extraOptions?: ComponentOptions,
 ): ComponentType<T> {
-  const fn: FunctionalComponent = (_props, ...args) => {
+  const fn: FunctionalComponent = (_props, ctx) => {
     const props = useProps()
-    return comp(props as any, ...args)
+    return comp(props as any, ctx)
   }
   Object.keys(comp).forEach((key) => {
     // @ts-expect-error
