@@ -1,4 +1,14 @@
-import type { DefineSetupFnComponent, SlotsType } from 'vue'
+import type {
+  ComponentPropsOptions,
+  DefineSetupFnComponent,
+  EmitsOptions,
+  EmitsToProps,
+  SetupContext,
+  ShortEmitsToObject,
+  Slots,
+  SlotsType,
+  FunctionalComponent as VueFunctionalComponent,
+} from 'vue'
 
 type RemovePrefix<
   K extends string,
@@ -19,3 +29,23 @@ export type ComponentType<T extends Record<any, any>> = DefineSetupFnComponent<
   ExtractEvent<T>,
   SlotsType<ExtractSlots<T>>
 >
+
+type IfAny<T, Y, N> = 0 extends 1 & T ? Y : N
+export interface FunctionalComponent<
+  P = {},
+  E extends EmitsOptions | Record<string, any[]> = {},
+  S extends Record<string, any> = any,
+  EE extends EmitsOptions = ShortEmitsToObject<E>,
+> {
+  (
+    props: P & EmitsToProps<EE>,
+    ctx: SetupContext<EE, IfAny<S, {}, SlotsType<S>>>,
+  ): any
+  props?: ComponentPropsOptions<P>
+  emits?: EE | (keyof EE)[]
+  slots?: IfAny<S, Slots, SlotsType<S>>
+  expose?: string[]
+  inheritAttrs?: boolean
+  displayName?: string
+  compatConfig?: VueFunctionalComponent['compatConfig']
+}

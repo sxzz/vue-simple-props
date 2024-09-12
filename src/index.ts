@@ -1,11 +1,6 @@
-import {
-  defineComponent,
-  type Component,
-  type ComponentOptions,
-  type FunctionalComponent,
-} from 'vue'
+import { defineComponent, type Component, type ComponentOptions } from 'vue'
 import { useProps } from './composables'
-import type { ComponentType } from './types'
+import type { ComponentType, FunctionalComponent } from './types'
 
 export * from './composables'
 export * from './types'
