@@ -52,7 +52,7 @@
     "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@sxzz/eslint-config": "^4.1.6",
+    "@sxzz/eslint-config": "^4.2.0",
     "@sxzz/prettier-config": "^2.0.2",
     "@types/node": "^22.5.4",
     "@vitejs/plugin-vue-jsx": "^4.0.1",
@@ -60,13 +60,13 @@
     "bumpp": "^9.5.2",
     "eslint": "^9.10.0",
     "fast-glob": "^3.3.2",
-    "happy-dom": "^15.7.3",
+    "happy-dom": "^15.7.4",
     "prettier": "^3.3.3",
     "tsup": "^8.2.4",
     "tsx": "^4.19.0",
-    "typescript": "^5.5.4",
+    "typescript": "^5.6.2",
     "vitest": "^2.0.5",
-    "vue": "^3.5.3"
+    "vue": "^3.5.4"
   },
   "prettier": "@sxzz/prettier-config"
 }
