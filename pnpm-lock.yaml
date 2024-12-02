@@ -65,16 +65,16 @@ importers:
     devDependencies:
       '@vitejs/plugin-vue':
         specifier: ^5.2.0
-        version: 5.2.0(vite@5.4.11(@types/node@22.9.0))(vue@3.5.13(typescript@5.6.3))
+        version: 5.2.0(vite@6.0.1(@types/node@22.9.0)(jiti@1.21.6)(tsx@4.19.2)(yaml@2.5.1))(vue@3.5.13(typescript@5.6.3))
       '@vitejs/plugin-vue-jsx':
         specifier: ^4.1.0
-        version: 4.1.0(vite@5.4.11(@types/node@22.9.0))(vue@3.5.13(typescript@5.6.3))
+        version: 4.1.0(vite@6.0.1(@types/node@22.9.0)(jiti@1.21.6)(tsx@4.19.2)(yaml@2.5.1))(vue@3.5.13(typescript@5.6.3))
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
       vite:
-        specifier: ^5.4.11
-        version: 5.4.11(@types/node@22.9.0)
+        specifier: ^6.0.1
+        version: 6.0.1(@types/node@22.9.0)(jiti@1.21.6)(tsx@4.19.2)(yaml@2.5.1)
       vue-tsc:
         specifier: ^2.1.10
         version: 2.1.10(typescript@5.6.3)
@@ -2681,6 +2681,46 @@ packages:
       terser:
         optional: true
 
+  vite@6.0.1:
+    resolution: {integrity: sha512-Ldn6gorLGr4mCdFnmeAOLweJxZ34HjKnDm4HGo6P66IEqTxQb36VEdFJQENKxWjupNfoIjvRUnswjn1hpYEpjQ==}
+    engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
+    hasBin: true
+    peerDependencies:
+      '@types/node': ^18.0.0 || ^20.0.0 || >=22.0.0
+      jiti: '>=1.21.0'
+      less: '*'
+      lightningcss: ^1.21.0
+      sass: '*'
+      sass-embedded: '*'
+      stylus: '*'
+      sugarss: '*'
+      terser: ^5.16.0
+      tsx: ^4.8.1
+      yaml: ^2.4.2
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      jiti:
+        optional: true
+      less:
+        optional: true
+      lightningcss:
+        optional: true
+      sass:
+        optional: true
+      sass-embedded:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
+      tsx:
+        optional: true
+      yaml:
+        optional: true
+
   vitest@2.1.5:
     resolution: {integrity: sha512-P4ljsdpuzRTPI/kbND2sDZ4VmieerR2c9szEZpjc+98Z9ebvnXmM5+0tHEKqYZumXqlvnmfWsjeFOjXVriDG7A==}
     engines: {node: ^18.0.0 || >=20.0.0}
@@ -3550,9 +3590,19 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@vitejs/plugin-vue@5.2.0(vite@5.4.11(@types/node@22.9.0))(vue@3.5.13(typescript@5.6.3))':
+  '@vitejs/plugin-vue-jsx@4.1.0(vite@6.0.1(@types/node@22.9.0)(jiti@1.21.6)(tsx@4.19.2)(yaml@2.5.1))(vue@3.5.13(typescript@5.6.3))':
     dependencies:
-      vite: 5.4.11(@types/node@22.9.0)
+      '@babel/core': 7.26.0
+      '@babel/plugin-transform-typescript': 7.25.9(@babel/core@7.26.0)
+      '@vue/babel-plugin-jsx': 1.2.5(@babel/core@7.26.0)
+      vite: 6.0.1(@types/node@22.9.0)(jiti@1.21.6)(tsx@4.19.2)(yaml@2.5.1)
+      vue: 3.5.13(typescript@5.6.3)
+    transitivePeerDependencies:
+      - supports-color
+
+  '@vitejs/plugin-vue@5.2.0(vite@6.0.1(@types/node@22.9.0)(jiti@1.21.6)(tsx@4.19.2)(yaml@2.5.1))(vue@3.5.13(typescript@5.6.3))':
+    dependencies:
+      vite: 6.0.1(@types/node@22.9.0)(jiti@1.21.6)(tsx@4.19.2)(yaml@2.5.1)
       vue: 3.5.13(typescript@5.6.3)
 
   '@vitest/expect@2.1.5':
@@ -5555,6 +5605,18 @@ snapshots:
     optionalDependencies:
       '@types/node': 22.9.0
       fsevents: 2.3.3
+
+  vite@6.0.1(@types/node@22.9.0)(jiti@1.21.6)(tsx@4.19.2)(yaml@2.5.1):
+    dependencies:
+      esbuild: 0.24.0
+      postcss: 8.4.49
+      rollup: 4.24.2
+    optionalDependencies:
+      '@types/node': 22.9.0
+      fsevents: 2.3.3
+      jiti: 1.21.6
+      tsx: 4.19.2
+      yaml: 2.5.1
 
   vitest@2.1.5(@types/node@22.9.0)(happy-dom@15.11.6):
     dependencies:
