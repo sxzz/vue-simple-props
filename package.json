@@ -52,13 +52,13 @@
     "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@sxzz/eslint-config": "^4.5.1",
+    "@sxzz/eslint-config": "^4.6.0",
     "@sxzz/prettier-config": "^2.0.2",
     "@types/node": "^22.10.5",
     "@vitejs/plugin-vue-jsx": "^4.1.1",
     "@vue/test-utils": "^2.4.6",
-    "bumpp": "^9.9.3",
-    "eslint": "^9.17.0",
+    "bumpp": "^9.10.0",
+    "eslint": "^9.18.0",
     "fast-glob": "^3.3.3",
     "happy-dom": "^16.5.3",
     "prettier": "^3.4.2",
