@@ -9,6 +9,9 @@
     "types": ["node", "vue/jsx"],
     "strict": true,
     "noUnusedLocals": true,
+    "declaration": true,
+    "isolatedDeclarations": true,
+    "noEmit": true,
     "esModuleInterop": true,
     "skipLibCheck": true
   },
