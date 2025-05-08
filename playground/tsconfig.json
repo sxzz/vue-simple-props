@@ -17,7 +17,5 @@
     "noEmit": true,
     "isolatedModules": true,
     "skipLibCheck": true
-  },
-  "references": [{ "path": "./tsconfig.node.json" }],
-  "include": ["src"]
+  }
 }
