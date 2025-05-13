@@ -38,9 +38,8 @@ export function useProps<T>(): T {
         const key = camelizePropKey(p)
 
         // track reactivity
-        // @ts-expect-error
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-        instance.proxy?.$attrs[key]
+        instance.proxy?.$attrs
 
         return Reflect.get(getProps(), key, receiver)
       },
