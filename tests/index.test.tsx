@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { expect, test, vi } from 'vitest'
-import { defineComponent, h, nextTick, ref, type VNode } from 'vue'
+import { defineComponent, h, nextTick, ref, watch, type VNode } from 'vue'
 import {
   defineFunctionalComponent,
   defineSimpleComponent,
@@ -243,4 +243,28 @@ test('hyphenated', () => {
 
   expect(props['on-update:modelValue']).toBe(props['onUpdate:modelValue'])
   expect(props['render-default']).toBe(props.renderDefault)
+})
+
+test('watch props', async () => {
+  const fn = vi.fn()
+  const Comp = defineSimpleComponent({
+    setup() {
+      const props = useProps<{ count: number }>()
+      watch(() => props.count, fn)
+      return () => h('div')
+    },
+  })
+
+  const count = ref(0)
+  const Parent = defineComponent({
+    setup() {
+      return () => <Comp count={count.value} />
+    },
+  })
+  mount(Parent)
+
+  expect(fn).toHaveBeenCalledTimes(0)
+  count.value++
+  await nextTick()
+  expect(fn).toHaveBeenCalledTimes(1)
 })
