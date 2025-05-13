@@ -1,4 +1,4 @@
-import { ref, type AllowedComponentProps, type VNode } from 'vue'
+import { ref, watchEffect, type AllowedComponentProps, type VNode } from 'vue'
 import { defineFunctionalComponent, useClassAndStyle } from 'vue-simple-props'
 
 interface Props extends AllowedComponentProps {
@@ -11,6 +11,10 @@ interface Props extends AllowedComponentProps {
 
 export const Comp = defineFunctionalComponent(
   (props: Props) => {
+    watchEffect(() => {
+      console.info('watch effect:', props.foo)
+    })
+
     const styles = useClassAndStyle()
     const count = ref(0)
 

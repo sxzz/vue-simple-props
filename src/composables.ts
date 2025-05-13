@@ -35,7 +35,14 @@ export function useProps<T>(): T {
           const slot = Reflect.get(slots, slotName, receiver)
           if (slot) return slot
         }
-        return Reflect.get(getProps(), camelizePropKey(p), receiver)
+        const key = camelizePropKey(p)
+
+        // track reactivity
+        // @ts-expect-error
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+        instance.proxy?.$attrs[key]
+
+        return Reflect.get(getProps(), key, receiver)
       },
       ownKeys() {
         return [
