@@ -56,7 +56,7 @@
     "@vue/test-utils": "^2.4.6",
     "bumpp": "^10.1.1",
     "eslint": "^9.28.0",
-    "happy-dom": "^17.6.3",
+    "happy-dom": "^18.0.1",
     "prettier": "^3.5.3",
     "tsdown": "^0.12.7",
     "tsx": "^4.19.4",
