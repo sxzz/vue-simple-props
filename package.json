@@ -52,7 +52,7 @@
     "@sxzz/eslint-config": "^7.0.4",
     "@sxzz/prettier-config": "^2.2.3",
     "@types/node": "^22.15.34",
-    "@vitejs/plugin-vue-jsx": "^4.2.0",
+    "@vitejs/plugin-vue-jsx": "^5.0.1",
     "@vue/test-utils": "^2.4.6",
     "bumpp": "^10.2.0",
     "eslint": "^9.30.0",
