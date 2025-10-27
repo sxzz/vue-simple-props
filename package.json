@@ -61,7 +61,7 @@
     "tsdown": "^0.15.10",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3",
-    "vitest": "^3.2.4",
+    "vitest": "^4.0.4",
     "vue": "^3.5.22"
   },
   "prettier": "@sxzz/prettier-config"
