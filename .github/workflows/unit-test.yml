@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup JS
-        uses: sxzz/workflows/setup-js@v1
+        uses: sxzz/workflows/setup-js@main
 
       - name: Lint
         run: pnpm run lint
