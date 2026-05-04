@@ -49,7 +49,7 @@
     "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@sxzz/eslint-config": "^7.4.0",
+    "@sxzz/eslint-config": "^8.0.0",
     "@sxzz/prettier-config": "^2.2.6",
     "@types/node": "^24.10.1",
     "@vitejs/plugin-vue-jsx": "^5.1.2",
