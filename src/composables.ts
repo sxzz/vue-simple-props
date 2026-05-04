@@ -101,5 +101,5 @@ export function useClassAndStyle(): ClassAndStyle {
     },
     ownKeys: () => keys,
     has: (target, p) => keys.includes(p as string),
-  })
+  }) as any
 }
