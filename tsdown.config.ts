@@ -1,9 +1,11 @@
-import { defineConfig } from 'tsdown'
+import { lib } from 'tsdown-preset-sxzz'
 
-export default defineConfig({
-  target: 'es2021',
-  platform: 'neutral',
-  exports: {
-    devExports: 'dev',
+export default lib(
+  {},
+  {
+    target: 'es2021',
+    exports: {
+      devExports: 'dev',
+    },
   },
-})
+)
