@@ -2,7 +2,7 @@
   "name": "vue-simple-props",
   "type": "module",
   "version": "0.6.4",
-  "packageManager": "pnpm@11.11.0",
+  "packageManager": "pnpm@11.13.0",
   "description": "Remove emits, slots, and attrs concepts in Vue.",
   "author": "Kevin Deng <sxzz@sxzz.moe>",
   "license": "MIT",
