@@ -52,7 +52,7 @@
     "@typescript/native-preview": "7.0.0-dev.20260707.2",
     "@vitejs/plugin-vue-jsx": "^5.1.5",
     "@vue/test-utils": "^2.4.10",
-    "bumpp": "^11.0.1",
+    "bumpp": "^12.0.0",
     "eslint": "^10.3.0",
     "happy-dom": "^20.9.0",
     "prettier": "^3.8.3",
