@@ -15,6 +15,7 @@
   "bugs": {
     "url": "https://github.com/sxzz/vue-simple-props/issues"
   },
+  "sideEffects": false,
   "exports": {
     ".": {
       "dev": "./src/index.ts",
